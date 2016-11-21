@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	linkedList := list.New(3)
+	linkedList := list.New()
 	fmt.Println(linkedList)
 	linkedList.Append(3)
 	fmt.Println(linkedList)

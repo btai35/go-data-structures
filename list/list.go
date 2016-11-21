@@ -1,34 +1,44 @@
 package list
 
+import "golang-data-structures/node"
+
 type List struct {
-	Head *Node
-	Tail *Node
+	Head *node.Node
+	Tail *node.Node
 	Size int
 }
 
-type Node struct {
-	Next *Node
-	Data int // TODO: Make generic
-}
-
-func New(num int) *List {
-	head := &Node{Next: nil, Data: num}
-	return &List{Head: head, Tail: head, Size: 1}
+func New() *List {
+	return &List{Head: nil, Tail: nil, Size: 0}
 }
 
 func (l *List) Append(num int) {
-	tail := l.Tail
-	new := Node{Next: nil, Data: num}
-	tail.Next = &new
+	new := node.Node{Next: nil, Data: num}
 
+	if l.Size == 0 {
+		l.Head = &new
+		l.Tail = &new
+		l.Size = 1
+
+		return
+	}
+
+	l.Tail.Next = &new
 	l.Tail = &new
 	l.Size = l.Size + 1
 }
 
 func (l *List) Prepend(num int) {
-	head := l.Head
-	new := Node{Next: head, Data: num}
+	if l.Size == 0 {
+		new := node.Node{Next: nil, Data: num}
+		l.Head = &new
+		l.Tail = &new
+		l.Size = 1
+		return
+	}
 
+	head := l.Head
+	new := node.Node{Next: head, Data: num}
 	l.Head = &new
 	l.Size = l.Size + 1
 }
