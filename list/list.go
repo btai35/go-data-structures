@@ -13,32 +13,32 @@ func New() *List {
 }
 
 func (l *List) Append(num int) {
-	new := node.Node{Next: nil, Data: num}
+	new := node.New(num, nil)
 
 	if l.Size == 0 {
-		l.Head = &new
-		l.Tail = &new
+		l.Head = new
+		l.Tail = new
 		l.Size = 1
 
 		return
 	}
 
-	l.Tail.Next = &new
-	l.Tail = &new
+	l.Tail.Next = new
+	l.Tail = new
 	l.Size = l.Size + 1
 }
 
 func (l *List) Prepend(num int) {
 	if l.Size == 0 {
-		new := node.Node{Next: nil, Data: num}
-		l.Head = &new
-		l.Tail = &new
+		new := node.New(num, nil)
+		l.Head = new
+		l.Tail = new
 		l.Size = 1
 		return
 	}
 
 	head := l.Head
-	new := node.Node{Next: head, Data: num}
-	l.Head = &new
+	new := node.New(num, head)
+	l.Head = new
 	l.Size = l.Size + 1
 }
