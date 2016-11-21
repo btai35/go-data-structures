@@ -5,3 +5,5 @@ Practice implementing different data structures in Golang
 Linked List
 
 Stack
+
+Queue
